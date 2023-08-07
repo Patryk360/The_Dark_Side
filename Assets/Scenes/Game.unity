@@ -1864,8 +1864,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstPersonCamera: {fileID: 1907157545}
+  firstPersonAudioListener: {fileID: 1907157544}
   thirdPersonCamera: {fileID: 2018364871}
+  thirdPersonAudioListener: {fileID: 2018364870}
   airplaneCamera: {fileID: 2017183287}
+  airplaneAudioListener: {fileID: 2017183286}
   airplane: {fileID: 1522257435}
   player: {fileID: 148247007}
   cam: {fileID: 1907157543}
@@ -2040,7 +2043,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2017183284}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &2017183287
 Camera:
   m_ObjectHideFlags: 0
@@ -2132,7 +2135,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2018364868}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &2018364871
 Camera:
   m_ObjectHideFlags: 0
