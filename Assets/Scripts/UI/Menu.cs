@@ -13,13 +13,21 @@ public class Menu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            menu.enabled = !menu.enabled;
-            Time.timeScale = menu.enabled ? 0 : 1;
-            if (menu.enabled)
+            if (menu.enabled == false)
             {
+                menu.enabled = true;
+                Time.timeScale = menu.enabled ? 0 : 1;
+                AudioListener.pause = !AudioListener.pause;
+                AudioListener.pause = AudioListener.pause ? true : false;
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
-            } else {
+            }
+            else
+            {
+                menu.enabled = false;
+                Time.timeScale = menu.enabled ? 0 : 1;
+                AudioListener.pause = !AudioListener.pause;
+                AudioListener.pause = AudioListener.pause ? true : false;
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
             }
