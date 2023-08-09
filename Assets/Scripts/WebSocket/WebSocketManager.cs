@@ -1,27 +1,13 @@
 using UnityEngine;
 using WebSocketSharp;
+using Newtonsoft.Json;
 
-public class WebSocketManager : MonoBehaviour
+public class WebSocketManager
 {
-    private static WebSocketManager instance;
-    private WebSocket webSocket;
+    private static WebSocket webSocket;
 
-    public static WebSocketManager Instance
+    public static void StartWebSocket()
     {
-        get { return instance; }
-    }
-
-    private void Awake()
-    {
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        instance = this;
-        DontDestroyOnLoad(gameObject); // Jeśli chcesz, aby obiekt przetrwał między scenami
-
         webSocket = new WebSocket("ws://localhost:8080");
         webSocket.Connect();
 
@@ -37,13 +23,15 @@ public class WebSocketManager : MonoBehaviour
 
         webSocket.OnMessage += (sender, e) =>
         {
+            
+            PlayerJoin.Join();
             Debug.Log("WS: " + e.Data);
         };
     }
 
-    public void SendWebSocketMessage(string message)
+    public static void SendWebSocketMessage(string message)
     {
-        if (webSocket.ReadyState == WebSocketState.Open)
+        if (webSocket != null && webSocket.ReadyState == WebSocketState.Open)
         {
             webSocket.Send(message);
         }

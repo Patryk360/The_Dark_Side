@@ -588,7 +588,6 @@ GameObject:
   - component: {fileID: 148247003}
   - component: {fileID: 148247008}
   - component: {fileID: 148247009}
-  - component: {fileID: 148247010}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -745,18 +744,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 148247007}
---- !u!114 &148247010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 148247002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eef0449581c5f2649961fea347f01b7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &197145599
 GameObject:
   m_ObjectHideFlags: 0
@@ -2412,7 +2399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4446b40aa9271914087f618d3fbe5cc1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.754
+      value: 0.549
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4446b40aa9271914087f618d3fbe5cc1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2865,8 +2852,8 @@ Transform:
   m_GameObject: {fileID: 1747873022}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.2317724, y: 2.6439755, z: 0.09}
-  m_LocalScale: {x: 0.09149, y: 0.058462203, z: 0.52141}
+  m_LocalPosition: {x: -2.2317724, y: 2.266, z: 1.371}
+  m_LocalScale: {x: 0.09149, y: 0.10003468, z: 0.52141}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4093,7 +4080,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -4119,7 +4106,7 @@ MonoBehaviour:
   lightFlash: {fileID: 2115938121}
   flashLight: {fileID: 2115938120}
   cam: {fileID: 1907157543}
-  speed: 0.1
+  speed: 0.6
   flashLightEnabled: 0
 --- !u!1 &2144591835
 GameObject:

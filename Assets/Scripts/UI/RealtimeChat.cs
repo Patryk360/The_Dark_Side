@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -32,7 +30,7 @@ public class RealtimeChat : MonoBehaviour
             {
                 if (chatText.text != "")
                 {
-                    WebSocketManager.Instance.SendWebSocketMessage(chatText.text);
+                    WebSocketManager.SendWebSocketMessage(chatText.text);
                     chatText.text = "";
                     chat.enabled = false;
                     Cursor.visible = false;
