@@ -8,10 +8,6 @@ public class Movement : MonoBehaviour
     public float x;
     public float y;
     public float z;
-    void Start()
-    {
-        
-    }
     void Update()
     {
         x = Input.GetAxis("Horizontal");
