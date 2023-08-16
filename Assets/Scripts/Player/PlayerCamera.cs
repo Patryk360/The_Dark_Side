@@ -32,11 +32,11 @@ public class PlayerCamera : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-            player.localScale = new Vector3(1, 0.5f, 1);
+            player.localScale = new Vector3(1, 0.7f, 1);
         }
         else if (Input.GetKeyUp(KeyCode.LeftControl))
         {
-            player.localScale = new Vector3(1, 1, 1);
+            player.localScale = new Vector3(1, 2, 1);
         }
         else if (Input.GetKeyDown(KeyCode.V))
         {
