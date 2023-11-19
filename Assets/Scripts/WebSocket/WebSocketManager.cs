@@ -1,11 +1,9 @@
 using UnityEngine;
 using WebSocketSharp;
-using Newtonsoft.Json;
 
 public class WebSocketManager
 {
     private static WebSocket webSocket;
-
     public static void StartWebSocket()
     {
         webSocket = new WebSocket("ws://localhost:8080");
@@ -23,17 +21,29 @@ public class WebSocketManager
 
         webSocket.OnMessage += (sender, e) =>
         {
-            
             PlayerJoin.Join();
             Debug.Log("WS: " + e.Data);
         };
     }
-
     public static void SendWebSocketMessage(string message)
     {
         if (webSocket != null && webSocket.ReadyState == WebSocketState.Open)
         {
             webSocket.Send(message);
+        } else
+        {
+            Debug.Log("WS: Not connected");
         }
+    }
+    public static void StopWebSocket()
+    {
+        if (webSocket != null)
+        {
+            webSocket.Close();
+        }
+    }
+    public static bool IsConneted()
+    {
+        return webSocket != null && webSocket.ReadyState == WebSocketState.Open;
     }
 }

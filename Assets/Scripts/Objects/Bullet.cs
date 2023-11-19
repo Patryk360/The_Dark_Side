@@ -20,6 +20,5 @@ public class Bullet : MonoBehaviour
     {
         audioSource.Play();
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-        bulletRigidbody.AddForce(mainCamera.transform.forward * speed, ForceMode.Impulse);
     }
 }

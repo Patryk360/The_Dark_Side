@@ -14,7 +14,10 @@ public class Menu : MonoBehaviour
             if (menu.enabled == false)
             {
                 menu.enabled = true;
-                Time.timeScale = menu.enabled ? 0 : 1;
+                if (!WebSocketManager.IsConneted())
+                {
+                    Time.timeScale = menu.enabled ? 0 : 1;
+                }
                 AudioListener.pause = !AudioListener.pause;
                 AudioListener.pause = AudioListener.pause ? true : false;
                 Cursor.visible = true;
@@ -23,7 +26,10 @@ public class Menu : MonoBehaviour
             else
             {
                 menu.enabled = false;
-                Time.timeScale = menu.enabled ? 0 : 1;
+                if (!WebSocketManager.IsConneted())
+                {
+                    Time.timeScale = menu.enabled ? 0 : 1;
+                }
                 AudioListener.pause = !AudioListener.pause;
                 AudioListener.pause = AudioListener.pause ? true : false;
                 Cursor.visible = false;
