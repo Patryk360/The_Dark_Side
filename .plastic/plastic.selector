@@ -1,4 +1,0 @@
-repository "The_Dark_Side@NeXiPL@cloud"
-  path "/"
-    br "/main"
-    co "/main"
