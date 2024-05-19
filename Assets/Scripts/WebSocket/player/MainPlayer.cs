@@ -13,6 +13,6 @@ public class MainPlayer : MonoBehaviour
     }
     private void Update()
     {
-        WebSocketManager.SendWebSocketMessage(playerTransform.position.x + "," + playerTransform.position.y + "," + playerTransform.position.z + "," + playerID);
+        //WebSocketManager.SendWebSocketMessage(playerTransform.position.x + "," + playerTransform.position.y + "," + playerTransform.position.z + "," + playerID);
     }
 }

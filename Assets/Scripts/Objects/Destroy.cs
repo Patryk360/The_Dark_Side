@@ -4,9 +4,9 @@ using UnityEngine;
 public class Destroy : MonoBehaviour
 {
     public AudioSource audioSource;
-    private void OnCollisionEnter(Collision col)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (col.gameObject.tag == "Glass")
+        if (collision.gameObject.CompareTag("Glass"))
         {
             audioSource.Play();
         }

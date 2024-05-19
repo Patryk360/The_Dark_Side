@@ -24,19 +24,25 @@ public class RealtimeChat : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
             }
         }
-        if (chat.enabled == true)
+
+        if (chat.enabled)
         {
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                if (chatText.text != "")
-                {
-                    WebSocketManager.SendWebSocketMessage(chatText.text);
-                    chatText.text = "";
-                    chat.enabled = false;
-                    Cursor.visible = false;
-                    Cursor.lockState = CursorLockMode.Locked;
-                }
-            }
+            return;
         }
+
+        if (!Input.GetKeyDown(KeyCode.Return))
+        {
+            return;
+        }
+
+        if (chatText.text == "")
+        {
+            return;
+        }
+        WebSocketManager.SendWebSocketMessage(chatText.text);
+        chatText.text = "";
+        chat.enabled = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

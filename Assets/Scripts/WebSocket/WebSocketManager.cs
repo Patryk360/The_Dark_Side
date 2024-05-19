@@ -11,18 +11,18 @@ public class WebSocketManager
 
         webSocket.OnError += (sender, e) =>
         {
-            Debug.Log("WS: Error - " + e.Message);
+            Debug.LogWarning("WS: Error - " + e.Message);
         };
 
         webSocket.OnClose += (sender, e) =>
         {
-            Debug.Log("WS: Close");
+            Debug.LogWarning("WS: Close");
         };
 
         webSocket.OnMessage += (sender, e) =>
         {
             PlayerJoin.Join();
-            Debug.Log("WS: " + e.Data);
+            Debug.LogWarning("WS: " + e.Data);
         };
     }
     public static void SendWebSocketMessage(string message)
@@ -32,7 +32,7 @@ public class WebSocketManager
             webSocket.Send(message);
         } else
         {
-            Debug.Log("WS: Not connected");
+            Debug.LogWarning("WS: Not connected");
         }
     }
     public static void StopWebSocket()
