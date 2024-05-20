@@ -6,7 +6,7 @@ public class WebSocketManager
     private static WebSocket webSocket;
     public static void StartWebSocket()
     {
-        webSocket = new WebSocket("ws://localhost:8080");
+        webSocket = new WebSocket("ws://localhost:3000");
         webSocket.Connect();
 
         webSocket.OnError += (sender, e) =>
@@ -30,9 +30,6 @@ public class WebSocketManager
         if (webSocket != null && webSocket.ReadyState == WebSocketState.Open)
         {
             webSocket.Send(message);
-        } else
-        {
-            Debug.LogWarning("WS: Not connected");
         }
     }
     public static void StopWebSocket()

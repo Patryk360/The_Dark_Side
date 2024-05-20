@@ -1,6 +1,12 @@
 using TMPro;
 using UnityEngine;
+using Newtonsoft.Json;
 
+public class ChatData
+{
+    public string Type { get; set; }
+    public string Content { get; set; }
+}
 public class RealtimeChat : MonoBehaviour
 {
     public Canvas chat;
@@ -25,7 +31,7 @@ public class RealtimeChat : MonoBehaviour
             }
         }
 
-        if (chat.enabled)
+        if (!chat.enabled)
         {
             return;
         }
@@ -39,7 +45,15 @@ public class RealtimeChat : MonoBehaviour
         {
             return;
         }
-        WebSocketManager.SendWebSocketMessage(chatText.text);
+        
+        ChatData chatData = new ChatData
+        {
+            Type = "chat",
+            Content = chatText.text
+        };
+        string json = JsonConvert.SerializeObject(chatData);
+        WebSocketManager.SendWebSocketMessage(json);
+        
         chatText.text = "";
         chat.enabled = false;
         Cursor.visible = false;

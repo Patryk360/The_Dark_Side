@@ -4,14 +4,30 @@ public class Bullet : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
+    public Transform recoinCamera;
+    public Transform player;
     public AudioSource audioSource;
-    public int speed;
-
-    void Update()
+    public int bulletSpeed;
+    public int rateOfFire;
+    public int magazine;
+    public bool onFire;
+    
+    void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
-            Shot();
+            if (onFire)
+            {
+                Shot();
+                
+                onFire = false;
+            }
+            rateOfFire -= 1;
+            if (rateOfFire == 0)
+            {
+                onFire = true;
+                rateOfFire = 10;
+            }
         }
     }
     
@@ -22,10 +38,14 @@ public class Bullet : MonoBehaviour
         bullet.name = System.Guid.NewGuid().ToString();
         
         Collider col = bullet.GetComponent<Collider>();
+        MeshRenderer mesh = bullet.GetComponent<MeshRenderer>();
+        Light shine = bullet.GetComponent<Light>();
         col.enabled = true;
+        mesh.enabled = true;
+        shine.enabled = true;
         
         Rigidbody rb = bullet.AddComponent<Rigidbody>();
-        rb.mass = 5;
-        rb.velocity = bulletSpawn.forward * speed;
+        rb.mass = 10;
+        rb.velocity = bulletSpawn.forward * bulletSpeed;
     }
 }

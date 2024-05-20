@@ -8,11 +8,13 @@ public class PlayerCamera : MonoBehaviour
     public AudioListener thirdPersonAudioListener;
     public Camera airplaneCamera;
     public AudioListener airplaneAudioListener;
-    public GameObject airplane;
+
+    public Canvas menu;
     
     public Transform player;
     public Transform cam;
     public float sensitivity;
+    public float smooth;
     public float x;
     public float y;
     void Start()
@@ -22,10 +24,12 @@ public class PlayerCamera : MonoBehaviour
     }
     void Update()
     {
-        x += Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
-        y += Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
-        
-        y = Mathf.Clamp(y, -90, 90);
+        if (menu.enabled)
+        {
+            return;
+        }
+        x += Mathf.Lerp(0, Input.GetAxis("Mouse X") * sensitivity, 1f / smooth);
+        y += Mathf.Lerp(0, Input.GetAxis("Mouse Y") * sensitivity, 1f / smooth);
         
         player.rotation = Quaternion.Euler(0, x, 0);
         cam.rotation = Quaternion.Euler(-y, x, 0);
@@ -40,21 +44,21 @@ public class PlayerCamera : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.V))
         {
-            if (firstPersonCamera.enabled == true)
+            if (firstPersonCamera.enabled)
             {
                 firstPersonCamera.enabled = false;
                 firstPersonAudioListener.enabled = false;
                 thirdPersonAudioListener.enabled = true;
                 thirdPersonCamera.enabled = true;
             }
-            else if (thirdPersonCamera.enabled == true)
+            else if (thirdPersonCamera.enabled)
             {
                 thirdPersonCamera.enabled = false;
                 thirdPersonAudioListener.enabled = false;
                 airplaneAudioListener.enabled = true;
                 airplaneCamera.enabled = true;
             }
-            else if (airplaneCamera.enabled == true)
+            else if (airplaneCamera.enabled)
             {
                 airplaneCamera.enabled = false;
                 airplaneAudioListener.enabled = false;

@@ -1,6 +1,15 @@
 using System;
 using UnityEngine;
+using Newtonsoft.Json;
 
+public class PlayerData
+{
+    public string Type { get; set; }
+    public float X { get; set; }
+    public float Y { get; set; }
+    public float Z { get; set; }
+    public string PlayerID { get; set; }
+}
 public class MainPlayer : MonoBehaviour
 {
     public Transform playerTransform;
@@ -13,6 +22,17 @@ public class MainPlayer : MonoBehaviour
     }
     private void Update()
     {
-        //WebSocketManager.SendWebSocketMessage(playerTransform.position.x + "," + playerTransform.position.y + "," + playerTransform.position.z + "," + playerID);
+        PlayerData playerData = new PlayerData
+        {
+            Type = "player",
+            X = playerTransform.position.x,
+            Y = playerTransform.position.y,
+            Z = playerTransform.position.z,
+            PlayerID = playerID
+        };
+        
+        string json = JsonConvert.SerializeObject(playerData);
+        
+        WebSocketManager.SendWebSocketMessage(json);
     }
 }

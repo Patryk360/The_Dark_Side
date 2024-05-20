@@ -5,18 +5,17 @@ public class Movement : MonoBehaviour
     public Transform player;
     public float speed;
     public float jumpHeight;
-    public float x;
-    public float y;
-    public float z;
+    private float _x;
+    private float _z;
     void Update()
     {
-        x = Input.GetAxis("Horizontal");
-        y = Input.GetAxis("Jump");
-        z = Input.GetAxis("Vertical");
-        player.Translate(x * speed * Time.deltaTime, 0, z * speed * Time.deltaTime);
-        if (y > 0)
+        _x = Input.GetAxis("Horizontal");
+        _z = Input.GetAxis("Vertical");
+        player.Translate(_x * speed * Time.deltaTime, 0, _z * speed * Time.deltaTime);
+
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            player.Translate(0, y * jumpHeight * Time.deltaTime, 0);
+            player.Translate(0, jumpHeight, 0);
         }
         
         if (Input.GetKey(KeyCode.LeftShift))
