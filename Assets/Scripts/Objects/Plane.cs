@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class XD : MonoBehaviour
+public class Plane : MonoBehaviour
 {
     [HideInInspector] public bool isLanding = false;
     public float speed = 150;

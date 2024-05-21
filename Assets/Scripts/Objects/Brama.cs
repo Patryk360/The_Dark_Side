@@ -4,8 +4,9 @@ public class Brama : MonoBehaviour
 {
     public Animator animator;
     public Camera mainCamera;
-    public Canvas textCanvas;
-    void Update()
+    public Canvas textCanvasOpen;
+    public Canvas textCanvasClose;
+    void FixedUpdate()
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -13,19 +14,30 @@ public class Brama : MonoBehaviour
         {
             if (hit.collider.CompareTag("brama"))
             {
-                textCanvas.enabled = true;
-                if (Input.GetKeyDown(KeyCode.E))
+                if (!animator.GetBool("open"))
+                {
+                    textCanvasOpen.enabled = true;
+                    textCanvasClose.enabled = false;
+                }
+
+                if (animator.GetBool("open"))
+                {
+                    textCanvasClose.enabled = true;
+                    textCanvasOpen.enabled = false;
+                }
+                if (Input.GetKey(KeyCode.E))
                 {
                     animator.SetBool("open", true);
                 }
-                if (Input.GetKeyUp(KeyCode.E))
+                if (Input.GetKey(KeyCode.Q))
                 {
                     animator.SetBool("open", false);
                 }
             }
             else
             {
-                textCanvas.enabled = false;
+                textCanvasOpen.enabled = false;
+                textCanvasClose.enabled = false;
             }
         }
     }

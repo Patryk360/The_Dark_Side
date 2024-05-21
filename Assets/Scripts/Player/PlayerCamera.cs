@@ -34,15 +34,7 @@ public class PlayerCamera : MonoBehaviour
         player.rotation = Quaternion.Euler(0, x, 0);
         cam.rotation = Quaternion.Euler(-y, x, 0);
         
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            player.localScale = new Vector3(1, 0.7f, 1);
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftControl))
-        {
-            player.localScale = new Vector3(1, 2, 1);
-        }
-        else if (Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.V))
         {
             if (firstPersonCamera.enabled)
             {

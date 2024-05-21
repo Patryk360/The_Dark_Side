@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -11,9 +12,17 @@ public class Bullet : MonoBehaviour
     public int rateOfFire;
     public int magazine;
     public bool onFire;
-    
-    void FixedUpdate()
+
+    private keepItem test;
+
+    private void Start()
     {
+        test = FindObjectOfType<keepItem>();
+    }
+
+    void Update()
+    {
+        Debug.Log(test.holdItemName);
         if (Input.GetKey(KeyCode.Mouse0))
         {
             if (onFire)
@@ -46,6 +55,7 @@ public class Bullet : MonoBehaviour
         
         Rigidbody rb = bullet.AddComponent<Rigidbody>();
         rb.mass = 10;
+        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
         rb.velocity = bulletSpawn.forward * bulletSpeed;
     }
 }

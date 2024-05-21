@@ -7,11 +7,11 @@ public class Movement : MonoBehaviour
     public float jumpHeight;
     private float _x;
     private float _z;
-    void Update()
+    void FixedUpdate()
     {
         _x = Input.GetAxis("Horizontal");
         _z = Input.GetAxis("Vertical");
-        player.Translate(_x * speed * Time.deltaTime, 0, _z * speed * Time.deltaTime);
+        player.Translate(_x * speed * Time.fixedDeltaTime, 0, _z * speed * Time.fixedDeltaTime);
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -20,7 +20,7 @@ public class Movement : MonoBehaviour
         
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            speed = 15;
+            speed = 11;
         }
         else
         {
