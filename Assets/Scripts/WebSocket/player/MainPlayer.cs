@@ -10,6 +10,7 @@ public class PlayerData
     public float Z { get; set; }
     public string PlayerID { get; set; }
 }
+
 public class MainPlayer : MonoBehaviour
 {
     public Transform playerTransform;
@@ -18,7 +19,8 @@ public class MainPlayer : MonoBehaviour
     {
         Guid newGuid = Guid.NewGuid();
         playerID = newGuid.ToString("N");
-        WebSocketManager.StartWebSocket();
+
+        WebSocketManager.StartWebSocket("ws://localhost:3000");
     }
     private void Update()
     {

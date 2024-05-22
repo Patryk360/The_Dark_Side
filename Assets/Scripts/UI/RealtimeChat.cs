@@ -11,10 +11,7 @@ public class RealtimeChat : MonoBehaviour
 {
     public Canvas chat;
     public TMP_InputField chatText;
-    void Start()
-    {
-        chat.enabled = false;
-    }
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
@@ -23,6 +20,7 @@ public class RealtimeChat : MonoBehaviour
             
             if (chat.enabled)
             {
+                chatText.ActivateInputField();
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
             } else {

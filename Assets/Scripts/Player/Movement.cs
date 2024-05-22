@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    public Canvas chat;
     public Transform player;
     public float speed;
     public float jumpHeight;
@@ -9,6 +10,10 @@ public class Movement : MonoBehaviour
     private float _z;
     void FixedUpdate()
     {
+        if (chat.enabled)
+        {
+            return;
+        }
         _x = Input.GetAxis("Horizontal");
         _z = Input.GetAxis("Vertical");
         player.Translate(_x * speed * Time.fixedDeltaTime, 0, _z * speed * Time.fixedDeltaTime);

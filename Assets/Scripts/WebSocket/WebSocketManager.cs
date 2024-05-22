@@ -1,12 +1,13 @@
 using UnityEngine;
 using WebSocketSharp;
 
-public class WebSocketManager
+public class WebSocketManager : MonoBehaviour
 {
     private static WebSocket webSocket;
-    public static void StartWebSocket()
+
+    public static void StartWebSocket(string url)
     {
-        webSocket = new WebSocket("ws://localhost:3000");
+        webSocket = new WebSocket(url);
         webSocket.Connect();
 
         webSocket.OnError += (sender, e) =>
@@ -21,7 +22,6 @@ public class WebSocketManager
 
         webSocket.OnMessage += (sender, e) =>
         {
-            PlayerJoin.Join();
             Debug.LogWarning("WS: " + e.Data);
         };
     }

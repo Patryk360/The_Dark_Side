@@ -10,6 +10,7 @@ public class PlayerCamera : MonoBehaviour
     public AudioListener airplaneAudioListener;
 
     public Canvas menu;
+    public Canvas chat;
     
     public Transform player;
     public Transform cam;
@@ -24,6 +25,10 @@ public class PlayerCamera : MonoBehaviour
     }
     void Update()
     {
+        if (chat.enabled)
+        {
+            return;
+        }
         if (menu.enabled)
         {
             return;

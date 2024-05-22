@@ -10,10 +10,6 @@ public class ChangeNick : MonoBehaviour
     {
         nickInputField.text = actualNickText.text;
     }
-    void Update()
-    {
-        
-    }
     public void ChangeNickButton()
     {
         playerNickText.text = nickInputField.text;

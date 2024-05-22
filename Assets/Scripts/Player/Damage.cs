@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Damage : MonoBehaviour
@@ -6,7 +5,7 @@ public class Damage : MonoBehaviour
     public float health = 100f;
     private void OnCollisionEnter(Collision col)
     {
-        bool isBullet = (col.gameObject.tag == "Bullet");
+        bool isBullet = col.gameObject.tag == "Bullet";
         if (isBullet)
         {
             float collisionForce = col.impulse.magnitude;

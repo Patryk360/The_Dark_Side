@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(test.holdItemName);
+        //Debug.Log(test.holdItemName);
         if (Input.GetKey(KeyCode.Mouse0))
         {
             if (onFire)
@@ -44,7 +44,7 @@ public class Bullet : MonoBehaviour
     {
         audioSource.Play();
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation * Quaternion.Euler(90, 0, 0));
-        bullet.name = System.Guid.NewGuid().ToString();
+        bullet.name = Guid.NewGuid().ToString();
         
         Collider col = bullet.GetComponent<Collider>();
         MeshRenderer mesh = bullet.GetComponent<MeshRenderer>();
@@ -55,7 +55,7 @@ public class Bullet : MonoBehaviour
         
         Rigidbody rb = bullet.AddComponent<Rigidbody>();
         rb.mass = 10;
-        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         rb.velocity = bulletSpawn.forward * bulletSpeed;
     }
 }

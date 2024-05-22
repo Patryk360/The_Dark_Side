@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerJoin
+public class PlayerJoin : MonoBehaviour
 {
         public static void Join()
         {
