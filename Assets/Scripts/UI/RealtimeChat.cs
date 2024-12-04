@@ -46,10 +46,11 @@ public class RealtimeChat : MonoBehaviour
         
         ChatData chatData = new ChatData
         {
-            Type = "chat",
+            Type = "realtimeChat",
             Content = chatText.text
         };
         string json = JsonConvert.SerializeObject(chatData);
+        Debug.Log(json);
         WebSocketManager.SendWebSocketMessage(json);
         
         chatText.text = "";

@@ -26,7 +26,7 @@ public class MainPlayer : MonoBehaviour
     {
         PlayerData playerData = new PlayerData
         {
-            Type = "player",
+            Type = "playerMove",
             X = playerTransform.position.x,
             Y = playerTransform.position.y,
             Z = playerTransform.position.z,

@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
         test = FindObjectOfType<keepItem>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         //Debug.Log(test.holdItemName);
         if (Input.GetKey(KeyCode.Mouse0))
@@ -35,7 +35,7 @@ public class Bullet : MonoBehaviour
             if (rateOfFire == 0)
             {
                 onFire = true;
-                rateOfFire = 10;
+                rateOfFire = 20;
             }
         }
     }

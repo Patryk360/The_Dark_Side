@@ -20,7 +20,8 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            player.Translate(0, jumpHeight, 0);
+            bool isGrounded = Physics.Raycast(player.position, Vector3.down, jumpHeight-0.2f);
+            if (isGrounded) player.Translate(0, jumpHeight, 0);
         }
         
         if (Input.GetKey(KeyCode.LeftShift))
